@@ -46,10 +46,9 @@ body {
           display: flex;
           align-items: center;
           padding: 1rem 1.25rem;
-          cursor: pointer;   
           color:$color-text;
         
-            &:hover{
+            &.active:hover{
                 background-color:$color-hover-tab;
               }
             &::after{
@@ -71,6 +70,7 @@ body {
 
           &.active button{
             font-weight: bold;
+            cursor: pointer;   
            }
 
            &:not(.active) button::after{
