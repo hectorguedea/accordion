@@ -1,0 +1,132 @@
+/*
+Accordion CSS
+Héctor Guedea
+Updated: November 9, 2023
+*/
+$color-hover-tab: #EDF3F4;
+$color-text: #2C2C27;
+$icon-arrow: '../assets/icons/arrow.svg';
+$icon-lock: '../assets/icons/lock.svg';
+
+body {
+  background-color: #fff;
+  color:$color-text; 
+  font-family: sans-serif;
+  p{
+    line-height: 1.5rem;
+  }
+}
+
+#container{
+  width:65%;
+  margin:0 auto;
+}
+#accordion{
+
+  .accordion-item{
+    border-bottom: 2px solid #eee;
+    width: 100%;
+    height: auto;
+        h2{
+          margin:0;
+          padding: 0;
+          height: auto;
+          width: 100%;
+        }
+     
+        button{
+          position: relative;
+          font-size:1rem;
+          appearance: none;
+          border: none;
+          background-color: transparent;
+          text-decoration: none;
+          height: auto;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          padding: 1rem 1.25rem;
+          cursor: pointer;   
+          color:$color-text;
+        
+            &:hover{
+                background-color:$color-hover-tab;
+              }
+            &::after{
+              background-image:url($icon-arrow);
+              flex-shrink: 0;
+              width: 1.25rem;
+              height: 1.25rem;
+              margin-left: auto;
+              content: "";
+              background-repeat: no-repeat;
+              background-size: 1.25rem;
+            }
+            &:not(.collapsed)::after{
+              background-image:url($icon-arrow);
+              transform: rotate(-180deg);
+            } 
+
+          }
+
+          &.active button{
+            font-weight: bold;
+           }
+
+           &:not(.active) button::after{
+            background-image:url($icon-lock);
+            transform: rotate(360deg);
+           }
+           
+        
+         .accordion-body{
+          display: flex;
+          padding:0 1.25rem;
+
+            &[aria-hidden="true"] {
+              opacity: 0;
+              max-height: 0;
+            }
+              &.show{
+                  animation: fadeIn 0.4s ease;
+                }
+                
+                @keyframes fadeIn {
+                  from {
+                    opacity: 0;
+                    height: 0;
+                  }
+                  to {
+                    opacity: 1;
+                    height: 100%;
+                  }
+                }
+          }
+         }
+
+            
+         @media screen and (max-width: 1280px) {
+          .accordion-body.show {
+            display: block !important;
+            img {
+              text-align: center;
+              margin: 0 auto;
+              display: block;
+              width: 100%;
+            }
+          }
+        }
+      
+       
+      }
+ @media screen and (max-width: 768px) {
+        #container {
+          width: 90%;
+        }
+      }
+    
+  @media screen and (max-width: 320px) {
+        #container {
+          width: 98%;
+        }
+    }

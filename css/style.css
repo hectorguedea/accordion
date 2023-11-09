@@ -1,0 +1,115 @@
+@charset "UTF-8";
+/*
+Accordion CSS
+Héctor Guedea
+Updated: November 9, 2023
+*/
+body {
+  background-color: #fff;
+  color: #2C2C27;
+  font-family: sans-serif;
+}
+body p {
+  line-height: 1.5rem;
+}
+
+#container {
+  width: 65%;
+  margin: 0 auto;
+}
+
+#accordion .accordion-item {
+  border-bottom: 2px solid #eee;
+  width: 100%;
+  height: auto;
+}
+#accordion .accordion-item h2 {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: 100%;
+}
+#accordion .accordion-item button {
+  position: relative;
+  font-size: 1rem;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  color: #2C2C27;
+}
+#accordion .accordion-item button:hover {
+  background-color: #EDF3F4;
+}
+#accordion .accordion-item button::after {
+  background-image: url("../assets/icons/arrow.svg");
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+}
+#accordion .accordion-item button:not(.collapsed)::after {
+  background-image: url("../assets/icons/arrow.svg");
+  transform: rotate(-180deg);
+}
+#accordion .accordion-item.active button {
+  font-weight: bold;
+}
+#accordion .accordion-item:not(.active) button::after {
+  background-image: url("../assets/icons/lock.svg");
+  transform: rotate(360deg);
+}
+#accordion .accordion-item .accordion-body {
+  display: flex;
+  padding: 0 1.25rem;
+}
+#accordion .accordion-item .accordion-body[aria-hidden=true] {
+  opacity: 0;
+  max-height: 0;
+}
+#accordion .accordion-item .accordion-body.show {
+  animation: fadeIn 0.4s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 1280px) {
+  #accordion .accordion-body.show {
+    display: block !important;
+  }
+  #accordion .accordion-body.show img {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #container {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 320px) {
+  #container {
+    width: 98%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
